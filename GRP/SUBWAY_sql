@@ -1,0 +1,10 @@
+DROP TABLE SUBWAY;
+
+CREATE TABLE SUBWAY (
+ subway_code               NUMBER(30) NOT NULL,
+ subway_name               VARCHAR2(100),
+ subway_length               NUMBER(30),
+ subway_price				 NUMBER(30),
+ CONSTRAINT SUBWAY_PRIMARY_KEY PRIMARY KEY (subway_code)
+);
+ 

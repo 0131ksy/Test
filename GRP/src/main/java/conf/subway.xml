@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+				  "mybatis-3-mapper.dtd">
+
+<mapper namespace="Subway">
+
+	<resultMap id="SubwayResult" type="rabbit.dto.Subway">
+		<result property="subwayCode" column="subway_code" />
+		<result property="subwayName" column="subway_name" />
+		<result property="subwayLength" column="subway_length" />
+		<result property="subwayPrice" column="subway_price" />
+	</resultMap>
+	
+	<select id="getAllSubway" resultMap="SubwayResult">
+		select * from subway
+	</select>
+	
+	<select id="getOneSubway" parameterType="int" resultMap="SubwayResult">
+		select *
+		from subway
+		where subway_code = #{subwayCode}
+	</select>
+	
+	<select id="getOneSubwayName" parameterType="String" resultMap="SubwayResult">
+		select *
+		from subway
+		where subway_name = #{subwayName}
+	</select>
+
+	<insert id="insertSubway" parameterType="rabbit.dto.Subway">
+		insert into subway(subway_code, subway_name, subway_length, subway_price)
+		values (#{subwayCode}, #{subwayName}, #{subwayLength}, #{subwayPrice})
+	</insert>
+	
+	<update id="updateSubway" parameterType="rabbit.dto.Subway">
+		update subway
+		set subway_name = #{subwayName}
+		where subway_code = #{subwayCode}
+	</update>
+	
+	<delete id="deleteSubway" parameterType="int">
+		delete
+		from subway
+		where subway_code = #{subwayCode}
+	</delete>
+	
+	<delete id="deleteAllSubway">
+		delete
+		from subway
+	</delete>
+
+</mapper>
